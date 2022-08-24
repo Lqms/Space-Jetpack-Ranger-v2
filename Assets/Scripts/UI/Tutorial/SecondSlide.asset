@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076122635ba5f2f49a73e93d852139d8, type: 3}
   m_Name: SecondSlide
   m_EditorClassIdentifier: 
-  _image: {fileID: 21300000, guid: 435e1fc239dfde348acf449b95077ea0, type: 3}
+  _image: {fileID: 21300000, guid: fbf0651aff56978479b7365ddf920018, type: 3}
   _hint: All objects in game (except bonuses) are destroyable
