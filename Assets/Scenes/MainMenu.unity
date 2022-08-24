@@ -187,7 +187,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &152998863
 GameObject:
@@ -230,7 +230,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &255349843
 GameObject:
@@ -447,12 +447,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514382907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -777.5999, y: 501.91998, z: -9719.999}
-  m_LocalScale: {x: 118.799995, y: 118.799995, z: 108}
+  m_LocalPosition: {x: -10.601851, y: 3.4899998, z: 0}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_Children:
   - {fileID: 255349844}
-  m_Father: {fileID: 190442243216216212}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &514382910
 MonoBehaviour:
@@ -466,10 +466,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccde847c0f7b3ce46b6a65e09ef52e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _destinationPoint: {fileID: 1237400554}
-  _startPoint: {fileID: 291380181}
   _image: {fileID: 2092016466}
+  _startPoint: {fileID: 291380181}
+  _destinationPoint: {fileID: 1237400554}
+  _speed: 10
 --- !u!95 &514382911
 Animator:
   serializedVersion: 3
@@ -790,7 +790,7 @@ RectTransform:
   - {fileID: 190442243216216212}
   - {fileID: 6930231144787447483}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -827,7 +827,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1476395355
 MonoBehaviour:
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1108,7 +1108,6 @@ RectTransform:
   - {fileID: 190442243313355970}
   - {fileID: 190442245010211035}
   - {fileID: 190442244123990600}
-  - {fileID: 514382909}
   m_Father: {fileID: 1350380293}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1151,6 +1150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settingsPanel: {fileID: 6930231144787447484}
+  _view: {fileID: 514382910}
   _start: {fileID: 190442243894817495}
   _upgrades: {fileID: 190442243313355969}
   _settings: {fileID: 190442245010211034}
@@ -1163,7 +1163,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190442243216216213}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
