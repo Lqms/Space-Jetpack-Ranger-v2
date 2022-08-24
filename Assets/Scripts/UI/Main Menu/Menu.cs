@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using IJunior.TypedScenes;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class Menu : MonoBehaviour
@@ -60,12 +59,12 @@ public class Menu : MonoBehaviour
 
     private void OnStartButtonClicked()
     {
-        SceneManager.LoadScene(1);
+        Game.Load();
     }
 
     private void OnUpgradesButtonClicked()
     {
-        SceneManager.LoadScene(2);
+        Upgrades.Load();
     }
 
     private void OnSettingsButtonClicked()
