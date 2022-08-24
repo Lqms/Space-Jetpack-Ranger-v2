@@ -1,37 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class StartAnimator : MonoBehaviour
+[RequireComponent(typeof(CanvasGroup))]
+public class MenuView : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private Transform _destinationPoint;
     [SerializeField] private Transform _startPoint;
+    [SerializeField] private Image _image;
 
     private float _distance;
-
-    public event UnityAction<float> Moved;
-    public event UnityAction AnimationFinished;
+    private CanvasGroup _canvasGroup;
 
     private void Start()
     {
         transform.position = _startPoint.position;
+        _canvasGroup = GetComponent<CanvasGroup>(); // теперь включаю менюшку тут перенести из скритпа Menu логику этого
         _distance = Vector2.Distance(_startPoint.position, _destinationPoint.position);
-        StartCoroutine(MoveCoroutine());
+        StartCoroutine(Animating());
     }
 
-    private IEnumerator MoveCoroutine()
+    private IEnumerator Animating()
     {
         while (transform.position.x < _destinationPoint.position.x)
         {
             transform.position = Vector2.MoveTowards(transform.position, _destinationPoint.position, _speed * Time.deltaTime);
             float distanceXTraveled = Vector2.Distance(_startPoint.position, transform.position);
             float distanceProgress = distanceXTraveled / _distance;
-            Moved?.Invoke(distanceProgress);
+            _image.fillAmount = distanceProgress;
             yield return null;
         }
+    }
 
-        AnimationFinished?.Invoke();
+    private void OnAnimationFinished()
+    {
+
     }
 }
