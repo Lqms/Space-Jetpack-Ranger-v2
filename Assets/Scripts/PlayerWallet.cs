@@ -6,12 +6,16 @@ using UnityEngine.Events;
 public class PlayerWallet : MonoBehaviour
 {
     [SerializeField] private float _money;
+    [SerializeField] private AudioClip _notEnoughtMoney;
+    [SerializeField] private AudioClip _successfulBuy;
+
+    public float Money => _money;
 
     public event UnityAction<float> MoneyChanged;
 
-    public void Initialize(float money)
+    private void OnEnable()
     {
-        _money = money;
+        _money = PlayerPrefs.GetFloat(StringConsts.Money.ToString());
     }
 
     public void AddMoney(float value)
@@ -25,7 +29,13 @@ public class PlayerWallet : MonoBehaviour
         if (_money >= value)
         {
             _money -= value;
+            PlayerPrefs.SetFloat(StringConsts.Money.ToString(), _money);
             MoneyChanged?.Invoke(_money);
+            AudioManager.Instance.PlayClip(_successfulBuy);
+        }
+        else
+        {
+            AudioManager.Instance.PlayClip(_notEnoughtMoney);
         }
 
         return _money >= value;

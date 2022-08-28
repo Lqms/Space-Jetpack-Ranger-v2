@@ -24,6 +24,7 @@ public class SavingMediator : MonoBehaviour
 
     private void Awake()
     {
+        /*
         if (PlayerPrefs.HasKey(Money))
             _wallet.Initialize(PlayerPrefs.GetFloat(Money));
         else
@@ -44,6 +45,7 @@ public class SavingMediator : MonoBehaviour
             else
                 _waveCounter.Initialize(0);
         }
+        */
     }
 
     private void OnMoneyChanged(float newValue)
