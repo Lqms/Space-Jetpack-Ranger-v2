@@ -12,8 +12,6 @@ public class MoneyView : MonoBehaviour
 
     private void OnEnable()
     {
-        _money.text = (PlayerPrefs.GetFloat(StringConsts.Money.ToString()) / Divider).ToString() + "K";
-
         _wallet.MoneyChanged += OnMoneyChanged;
     }
 

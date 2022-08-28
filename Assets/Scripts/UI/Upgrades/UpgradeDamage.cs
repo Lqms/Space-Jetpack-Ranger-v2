@@ -1,23 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class UpgradeDamage : Upgrade
+public class UpgradeDamage : MonoBehaviour, IUpgrade
 {
     [SerializeField] private float _extraDamage;
 
-    protected override void OnEnable()
-    {
-        base.OnEnable();
+    private float _damage;
 
-        CostMultiplier = PlayerPrefs.GetFloat(StringConsts.Damage.ToString());
-        CostText.text = (BaseCost * CostMultiplier / Divider).ToString() + "K";
+    public event UnityAction<float> DamageIncreased;
+
+    public void Initialize(float damage)
+    {
+        _damage = damage;
     }
 
-    protected override void Buy()
+    public void Apply()
     {
-        PlayerPrefs.SetFloat(StringConsts.Damage.ToString(), PlayerPrefs.GetFloat(StringConsts.Damage.ToString()) + _extraDamage);
-        CostMultiplier = PlayerPrefs.GetFloat(StringConsts.Damage.ToString());
-        CostText.text = (BaseCost * CostMultiplier / Divider).ToString() + "K";
+        _damage += _extraDamage;
+        DamageIncreased?.Invoke(_damage);
     }
 }

@@ -2,52 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum StringConsts
+{
+    Health,
+    Damage,
+    Energy,
+    Money,
+    Wave
+}
+
 public class SavingMediator : MonoBehaviour
 {
-    [SerializeField] private PlayerWallet _wallet;
     [SerializeField] private Player _player;
-    [SerializeField] private WaveCounter _waveCounter;
+    [SerializeField] private PlayerWallet _wallet;
+
+    [SerializeField] private UpgradeDamage _upgradeDamage; // 6 полей будет для ссылок на апргейд и вью
+    [SerializeField] private UpgradeView _upgradeDamageView; // для других апргрейдов также
+
 
     private const string Money = nameof(Money);
     private const string Damage = nameof(Damage);
-    private const string Wave = nameof(Wave);
 
     private void OnEnable()
     {
         _wallet.MoneyChanged += OnMoneyChanged;
+        _upgradeDamage.DamageIncreased += OnDamageIncreased;
     }
 
     private void OnDisable()
     {
         _wallet.MoneyChanged -= OnMoneyChanged;
+        _upgradeDamage.DamageIncreased -= OnDamageIncreased;
     }
 
-    private void Awake()
+    private void Start()
     {
-        if (PlayerPrefs.HasKey(Money))
-            _wallet.Initialize(PlayerPrefs.GetFloat(Money));
-        else
-            _wallet.Initialize(10_000);
+        _player.Initialize(PlayerPrefs.GetFloat(Damage));
+        _wallet.Initialize(PlayerPrefs.GetFloat(Money));
 
-        if (_player != null)
-        {
-            if (PlayerPrefs.HasKey(Damage))
-                _player.Initialize(PlayerPrefs.GetFloat(Damage));
-            else
-                _player.Initialize(50);
-        }
-
-        if (_waveCounter != null)
-        {
-            if (PlayerPrefs.HasKey(Wave))
-                _waveCounter.Initialize(PlayerPrefs.GetInt(Wave));
-            else
-                _waveCounter.Initialize(0);
-        }
+        _upgradeDamage.Initialize(PlayerPrefs.GetFloat(Damage));
+        _upgradeDamageView.Initialize(PlayerPrefs.GetFloat(Damage));
     }
 
-    private void OnMoneyChanged(float newValue)
+    private void OnMoneyChanged(float value)
     {
-        PlayerPrefs.SetFloat(Money, newValue);
+        PlayerPrefs.SetFloat(Money, value);
+    }
+
+    private void OnDamageIncreased(float value)
+    {
+        PlayerPrefs.SetFloat(Damage, value);
     }
 }

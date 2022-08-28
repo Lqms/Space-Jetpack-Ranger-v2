@@ -14,8 +14,15 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
+        /*
         _damage = _baseDamage + PlayerPrefs.GetFloat(StringConsts.Damage.ToString());
         _health = _baseHealth + PlayerPrefs.GetFloat(StringConsts.Health.ToString());
         _energy = _baseEnergy + PlayerPrefs.GetFloat(StringConsts.Energy.ToString());
+        */
+    }
+
+    public void Initialize(float damage)
+    {
+        _damage = _baseDamage + damage;
     }
 }

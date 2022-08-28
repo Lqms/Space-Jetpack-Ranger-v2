@@ -9,13 +9,12 @@ public class PlayerWallet : MonoBehaviour
     [SerializeField] private AudioClip _notEnoughtMoney;
     [SerializeField] private AudioClip _successfulBuy;
 
-    public float Money => _money;
-
     public event UnityAction<float> MoneyChanged;
 
-    private void OnEnable()
+    public void Initialize(float money)
     {
-        _money = PlayerPrefs.GetFloat(StringConsts.Money.ToString());
+        _money = money;
+        MoneyChanged?.Invoke(_money);
     }
 
     public void AddMoney(float value)
@@ -29,7 +28,6 @@ public class PlayerWallet : MonoBehaviour
         if (_money >= value)
         {
             _money -= value;
-            PlayerPrefs.SetFloat(StringConsts.Money.ToString(), _money);
             MoneyChanged?.Invoke(_money);
             AudioManager.Instance.PlayClip(_successfulBuy);
         }
